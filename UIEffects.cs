@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class UIEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -19,6 +19,11 @@ public class UIEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     private Vector3 _OriginalSize;
     private bool _MouseOver;
+
+    void OnEnable()
+    {
+        _MouseOver = false;
+    }
 
     void Start()
     {
