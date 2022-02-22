@@ -22,14 +22,24 @@ public class OnCollision : MonoBehaviour
     private void Action(Collider other)
     {
         if (_HasTag)
+        {
             if (other.CompareTag(_Tag) && _LayerMask == (_LayerMask | (1 << other.gameObject.layer)))
+                _Event.Invoke();
+        }
+        else
+            if(_LayerMask == (_LayerMask | (1 << other.gameObject.layer)))
                 _Event.Invoke();
     }
     private void Action(Collision other)
     {
         if (_HasTag)
+        { 
             if (other.gameObject.CompareTag(_Tag) && _LayerMask == (_LayerMask | (1 << other.gameObject.layer)))
                 _Event.Invoke();
+        }
+        else
+            if (_LayerMask == (_LayerMask | (1 << other.gameObject.layer)))
+            _Event.Invoke();
     }
 
     private void OnTriggerEnter(Collider other)
