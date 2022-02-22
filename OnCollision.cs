@@ -15,7 +15,7 @@ public class OnCollision : MonoBehaviour
 
     private void Start()
     {
-        if (_Tag != "" || _Tag != null)
+        if (_Tag != "" && _Tag != null)
             _HasTag = true;
     }
 
