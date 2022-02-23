@@ -7,16 +7,16 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] private ObjectPool_Pool[] _ObjectPools = null;
     private List<Transform> _Parents = new List<Transform>();
 
+    public static ObjectPool POOL;
+
     private void Awake()
     {
-        GameObject emptyobject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        Destroy(emptyobject.GetComponent<MeshRenderer>());
-        Destroy(emptyobject.GetComponent<BoxCollider>());
+        POOL = this;
 
         for (int i = 0; i < _ObjectPools.Length; i++)
         {
             //Create parent
-            GameObject poolparent = Instantiate(emptyobject, transform.position, Quaternion.identity);
+            GameObject poolparent = new GameObject();
             Destroy(poolparent.GetComponent<MeshRenderer>());
             Destroy(poolparent.GetComponent<BoxCollider>());
 
@@ -35,7 +35,6 @@ public class ObjectPool : MonoBehaviour
                 _ObjectPools[i]._Objects.Add(obj);
             }
         }
-        Destroy(emptyobject);
     }
 
     //GetObject
