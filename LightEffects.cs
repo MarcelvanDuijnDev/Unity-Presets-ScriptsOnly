@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -58,5 +58,12 @@ public class LightEffects : MonoBehaviour
     public void SetEffect(LightEffectOptions options)
     {
         _LightEffectOption = options;
+    }
+
+    public void ChangeLightIntensity(float amount)
+    {
+        _MinMaxIncrease.x += amount * Time.deltaTime;
+        if (_MinMaxIncrease.x < 0)
+            _MinMaxIncrease.x = 0;
     }
 }
